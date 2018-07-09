@@ -1,0 +1,15 @@
+#!/bin/bash
+
+export VISUAL=vim
+export HISTFILESIZE=50000
+export HISTSIZE=50000
+
+export PATH=$PATH:/usr/sbin:/sbin
+export PS1="\[\033[1;36m\][\[\033[1;34m\]r\[\033[0;31m\]tobar\[\033[1;33m\]@\[\033[0;32m\]\h\[\033[1;31m\] \W\[\033[1;36m\]]---> \[\033[0m\]"
+
+# NGAS-related
+export NGAS_DONT_MODIFY_BASHPROFILE=1
+export NGAS_PREFIX=/home/rtobar/NGAS
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'

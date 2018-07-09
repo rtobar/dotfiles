@@ -1,0 +1,1 @@
+*VT100.Translations: #override Ctrl<Key>space: set-altscreen(toggle) set-reverse-video(toggle)
