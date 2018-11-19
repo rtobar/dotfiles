@@ -34,6 +34,7 @@
 	mail = send-email
 	tc   = tag --contains
 	show = show --show-signature
+	rs   = !git stash pop && git stash
 [push]
 	default = upstream
 [filter "lfs"]

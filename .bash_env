@@ -4,12 +4,18 @@ export VISUAL=vim
 export HISTFILESIZE=50000
 export HISTSIZE=50000
 
+# Not always there, makes it easier to access a few programs
 export PATH=$PATH:/usr/sbin:/sbin
+
+# Signature terminal prompt
 export PS1="\[\033[1;36m\][\[\033[1;34m\]r\[\033[0;31m\]tobar\[\033[1;33m\]@\[\033[0;32m\]\h\[\033[1;31m\] \W\[\033[1;36m\]]---> \[\033[0m\]"
 
-# NGAS-related
+# Others
 export NGAS_DONT_MODIFY_BASHPROFILE=1
-export NGAS_PREFIX=/home/rtobar/NGAS
+export DOCKER_REGISTRY_ICRAR=
 
-# colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+# Used internally in other .bash* files
+_QUEUE_USERS="`whoami`"
+_VENVS_ROOT=
+_SCM_ROOT=
+_NGAS_TESTS_LOGS_DIR=
