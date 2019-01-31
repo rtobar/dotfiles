@@ -1,81 +1,61 @@
-set bg=light
+
+" Generic useful options
 syntax on
-
-hi CursorLine   cterm=NONE ctermbg=darkgrey ctermfg=NONE guibg=white guifg=white
-
-" When searching ignore cases and highlight the results
-set hlsearch
-set ignorecase
-
-" Show matching brackets/parenthesis
-set showmatch
-
-" Give some offset to the vertical scrolling
-set scrolloff=5
-
+set hlsearch                    " highlight all search results
+set ignorecase                  " case insensitive searching
+set showmatch                   " Show matching brackets/parenthesis
+set scrolloff=5                 " Leave 5 lines of offset when scrolling through a window
 set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
-
 set splitright                  " Puts new vsplit windows to the right of the current
 set splitbelow                  " Puts new split windows to the bottom of the current
-set showcmd
-set modeline
+set showcmd                     " Display the current command
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
+set modeline
 
 set tabstop=3
 "set mouse=a
-set t_Co=16
 
-
-
-" Use Vundle
+" ==================================================================================
+" Vundle plugins
+"
+" To get Vundle going, do the following
+"
+" git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+"
+" To get a plugin use :PluginInstall. E.g.:
+"
+" :PluginInstall bling/vim-airline
+"
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-
-" let Vundle manage Vundle, required
+" Plugins
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
-
-" All of your Plugins must be added before the following line
+" Colorschemes
+Plugin 'jacoborus/tender.vim'
+Plugin 'sjl/badwolf'
+Plugin 'gosukiwi/vim-atom-dark'
 call vundle#end()            " required
 filetype plugin indent on    " required
+" ==================================================================================
 
 
-
-
-
-
+colorscheme tender
 filetype indent on
 
-"map <C-J> <C-W>j<C-W>_
-"map <C-K> <C-W>k<C-W>_
-"map <C-L> <C-W>l<C-W>\|
-"map <C-H> <C-W>h<C-W>\|
+" Easier navigation through windows
 map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
 
+" Draw It start, stop
 map <f2> \di
 map <f3> \ds
-
-"set foldenable                  " Auto fold code
-"set foldmethod=indent
-"nmap <leader>f0 :set foldlevel=0<CR>
-"nmap <leader>f1 :set foldlevel=1<CR>
-"nmap <leader>f2 :set foldlevel=2<CR>
-"nmap <leader>f3 :set foldlevel=3<CR>
-"nmap <leader>f4 :set foldlevel=4<CR>
-"nmap <leader>f5 :set foldlevel=5<CR>
-"nmap <leader>f6 :set foldlevel=6<CR>
-"nmap <leader>f7 :set foldlevel=7<CR>
-"nmap <leader>f8 :set foldlevel=8<CR>
-"nmap <leader>f9 :set foldlevel=9<CR>
 
 " Persistent undo
 set undofile                " Save undo's after file closes
@@ -93,7 +73,7 @@ nnoremap gv guiW
 au BufRead,BufNewFile *.html,*.txt,README,*.rst set textwidth=80
 au BufRead,BufNewFile *.tex,*.rst,COMMIT_EDITMSG set spell spelllang=en
 au BufRead,BufNewFile *.midl,*.pidl set syntax=idl
-au BufRead,BufNewFile *.c,*.h,*.cc,*.cpp,*.java,*.py,*.f90,*.F90,*.tex,CMakeLists.txt,*.sh set number numberwidth=1
+au BufRead,BufNewFile *.c,*.h,*.cc,*.cpp,*.c.in,*.h.in,*.cc.in,*.cpp.in,*.java,*.py,*.f90,*.F90,*.tex,CMakeLists.txt,*.sh,*.yml set number numberwidth=1 list listchars=tab:>-,trail:.,extends:>,precedes:<
 au BufNewFile,BufRead *.cl	set syntax=opencl
 
 " Instead of reverting the cursor to the last position in the buffer, we
@@ -104,7 +84,7 @@ au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 " Easier codying in python
 au FileType python setlocal tabstop=4 softtabstop=4 shiftwidth=4 smarttab expandtab nosmartindent
 
-" For marking trailing whitespaces
+" Mark trailing whitespaces
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
@@ -137,7 +117,7 @@ if has('cmdline_info')
                                 " Selected characters/lines in visual mode
 endif
 
-" Run ctags with F12
+" Run ctags
 map <f12> :!ctags -R .<cr>
 
 " go to defn of tag under the cursor, case sensitive
