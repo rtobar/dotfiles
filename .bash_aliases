@@ -1,6 +1,9 @@
 #!/bin/bash
 
 alias s="sudo su -"
+if [ `uname` == Darwin ]; then
+	alias ls="ls -G"
+fi
 alias ll="ls -l"
 alias lr="ls -altr"
 
