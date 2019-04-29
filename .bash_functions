@@ -1,8 +1,14 @@
 #!/bin/bash
 
 cdl() {
-	lastdir="$(ls --color=none -tr | tail --lines 1)"
-	cd "$lastdir"
+
+   dir="."
+   if [ $# == 1 ]; then
+      dir="$1"
+   fi
+
+   lastdir="$(find "$dir" -mindepth 1 -maxdepth 1 -type d -printf '%C@\0%f\n' | sort -t'\0' -n | tail --lines 1 | awk -F'\0' '{print $2}')"
+   pushd "$dir/$lastdir"
 }
 
 #
