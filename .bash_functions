@@ -31,6 +31,10 @@ load_virtualenv() {
 	export LD_LIBRARY_PATH="$VIRTUAL_ENV/lib:$LD_LIBRARY_PATH"
 }
 
+loadWIC() {
+	load_virtualenv wic git/wic
+}
+
 loadNgas() {
 	load_virtualenv ngas_devel3 git/ngas
 }
@@ -61,6 +65,14 @@ loadDlg3.7() {
 
 loadDlg() {
 	load_virtualenv dlg3 git/daliuge yes
+}
+
+loadDlgPbc() {
+	load_virtualenv dlg_pbc git/daliuge-pbc
+}
+
+loadEagle() {
+	load_virtualenv eagle git/EAGLE
 }
 
 loadPips() {
@@ -117,6 +129,10 @@ loadPLAsTiCC() {
 	load_virtualenv plasticc_2018 git/plasticc-kit
 }
 
+loadIjson() {
+	load_virtualenv ijson git/ijson
+}
+
 #
 # NGAS utilities: running/inspecting tests, counting LOCs, etc
 #
@@ -147,6 +163,7 @@ lastNgasTest() {
 }
 
 _clocNgas() {
+	loadNgas
 	if [ "$1" = "yes" ]
 	then
 		plugins=src/ngamsPlugIns
@@ -156,8 +173,6 @@ _clocNgas() {
 	shift
 
 	lang_filter="--include-lang=Python,XML,SQL,C,C++,C/C++ Header,Bourne Again Shell"
-	lang_filter=""
-	loadNgas && \
 	cloc "$lang_filter" --exclude-dir build "$@" src/ngamsCore/ src/ngamsPClient/ src/ngamsServer/ src/ngamsCClient $plugins
 }
 
@@ -181,11 +196,33 @@ grepNgas() {
 #
 
 build_and_check_r_package() {
-	R CMD build .
+	pkg=${1:-.}
+	R CMD build $pkg
 	fname=$(ls -atr *.tar.gz | tail --lines 1)
 	R CMD check $fname --as-cran --no-manual
 }
 
 shark_evolved_galaxies_totals() {
 	echo 'scale=4; '`sed -r -n 's/.*Evolved galaxies in ([0-9\.]+).* \[s\]/\1/p; s/.*Evolved galaxies in ([0-9\.]+).* \[ms\]/(\1. \/ 1000)/p' $1 | paste -s -d +` | bc
+}
+
+profit_docker() {
+	cd ${_SCM_ROOT}/git/libprofit
+	cp ~/icrar/profit/Dockerfile ~/icrar/profit/cmake-3.1.3-Linux-x86_64.sh ~/icrar/profit/do.sh .
+	version=`cat VERSION`
+	docker build -t icrar/libprofit:$version .
+	rm Dockerfile cmake-3.1.3-Linux-x86_64.sh do.sh
+}
+
+appveyor_delete_cache() {
+	project=$1
+	if [ -z "$project" ]; then
+		echo "Give me a project slug"
+		return
+	fi
+	curl \
+	    -H "Authorization: Bearer $APPVEYOR_TOKEN" \
+	    -H "Content-Type: application/json" \
+	    -X DELETE \
+	    https://ci.appveyor.com/api/projects/rtobar/${project}/buildcache
 }
