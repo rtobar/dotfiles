@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Local extra information
-test -f ~/.bash_env.private && source ~/.bash_env.private
-
 export VISUAL=vim
 export HISTFILESIZE=50000
 export HISTSIZE=50000
@@ -19,6 +16,9 @@ export DOCKER_REGISTRY_ICRAR=
 
 # Used internally in other .bash* files
 _QUEUE_USERS="`whoami`"
-_VENVS_ROOT=
+_VENVS_ROOT=$HOME/venvs
 _SCM_ROOT=$HOME/scm
 _NGAS_TESTS_LOGS_DIR=
+
+# Local extra information
+test -f ~/.bash_env.private && source ~/.bash_env.private
