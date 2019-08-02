@@ -16,10 +16,10 @@
 	sbu  = status -sbuno
 	br   = branch
 	ec   = config --global -e
-	ld   = log --graph --pretty=format:'%Cred%h%Creset[%G?] -%C(yellow)%d%Creset %s %Cblue%an%Creset %Cgreen(%cr)%Creset' --date-order --all
-	ldb  = log --graph --pretty=format:'%Cred%h%Creset[%G?] -%C(yellow)%d%Creset %s %Cblue%an%Creset %Cgreen(%cr)%Creset' --date-order
-	lt   = log --graph --pretty=format:'%Cred%h%Creset[%G?] -%C(yellow)%d%Creset %s %Cblue%an%Creset %Cgreen(%cr)%Creset' --topo-order --all
-	ltb  = log --graph --pretty=format:'%Cred%h%Creset[%G?] -%C(yellow)%d%Creset %s %Cblue%an%Creset %Cgreen(%cr)%Creset' --topo-order
+	ld   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue%an%Creset %Cgreen(%cr)%Creset' --date-order --all
+	ldb  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue%an%Creset %Cgreen(%cr)%Creset' --date-order
+	lt   = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue%an%Creset %Cgreen(%cr)%Creset' --topo-order --all
+	ltb  = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cblue%an%Creset %Cgreen(%cr)%Creset' --topo-order
 	ds   = diff --stat
 	ss   = show --stat
 	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
