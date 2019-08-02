@@ -37,11 +37,11 @@
 	rs   = !git stash pop && git stash
 [push]
 	default = upstream
-[filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+#[filter "lfs"]
+#	smudge = git-lfs smudge -- %f
+#	process = git-lfs filter-process
+#	required = true
+#	clean = git-lfs clean -- %f
 [commit]
 	gpgSign = true
 [tag]
