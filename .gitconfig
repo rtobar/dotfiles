@@ -46,3 +46,7 @@
 	gpgSign = true
 [tag]
 	forceSignAnnotated = true
+[diff]
+	submodule = log
+[status]
+	submodulesummary = true
