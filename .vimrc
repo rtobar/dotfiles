@@ -73,7 +73,7 @@ nnoremap gv guiW
 au BufRead,BufNewFile *.html,*.txt,README,*.rst set textwidth=80
 au BufRead,BufNewFile *.tex,*.rst,COMMIT_EDITMSG set spell spelllang=en
 au BufRead,BufNewFile *.midl,*.pidl set syntax=idl
-au BufRead,BufNewFile *.c,*.h,*.cc,*.cpp,*.c.in,*.h.in,*.cc.in,*.cpp.in,*.java,*.py,*.f90,*.F90,*.tex,CMakeLists.txt,*.sh,*.yml set number numberwidth=1 list listchars=tab:>-,trail:.,extends:>,precedes:<
+au BufRead,BufNewFile *.c,*.h,*.cc,*.cpp,*.tcc,*.c.in,*.h.in,*.cc.in,*.cpp.in,*.R,*.java,*.py,*.f90,*.F90,*.tex,CMakeLists.txt,*.sh,*.yml,*cmake,*rst set number numberwidth=1 list listchars=tab:>-,trail:.,extends:>,precedes:<
 au BufNewFile,BufRead *.cl	set syntax=opencl
 
 " Instead of reverting the cursor to the last position in the buffer, we
