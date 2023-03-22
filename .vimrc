@@ -12,6 +12,7 @@ set showcmd                     " Display the current command
 set showmode                    " Display the current mode
 set cursorline                  " Highlight current line
 set modeline
+set nofixendofline              " Leave the end of the file as-is
 
 set tabstop=3
 "set mouse=a
@@ -35,10 +36,12 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'bling/vim-airline'
 Plugin 'tpope/vim-fugitive'
-" Colorschemes
+Plugin 'ycm-core/YouCompleteMe'
+Plugin 'mustache/vim-mustache-handlebars'
+"" Colorschemes
 Plugin 'jacoborus/tender.vim'
-Plugin 'sjl/badwolf'
-Plugin 'gosukiwi/vim-atom-dark'
+"Plugin 'sjl/badwolf'
+"Plugin 'gosukiwi/vim-atom-dark'
 call vundle#end()            " required
 filetype plugin indent on    " required
 " ==================================================================================
@@ -73,7 +76,7 @@ nnoremap gv guiW
 au BufRead,BufNewFile *.html,*.txt,README,*.rst set textwidth=80
 au BufRead,BufNewFile *.tex,*.rst,COMMIT_EDITMSG set spell spelllang=en
 au BufRead,BufNewFile *.midl,*.pidl set syntax=idl
-au BufRead,BufNewFile *.c,*.h,*.cc,*.cpp,*.tcc,*.c.in,*.h.in,*.cc.in,*.cpp.in,*.R,*.java,*.py,*.f90,*.F90,*.tex,CMakeLists.txt,*.sh,*.yml,*cmake,*rst set number numberwidth=1 list listchars=tab:>-,trail:.,extends:>,precedes:<
+au BufRead,BufNewFile *.po,*.json,*.c,*.h,*.cc,*.cpp,*.tcc,*.c.in,*.h.in,*.cc.in,*.cpp.in,*.R,*.java,*.py,*.f90,*.F90,*.tex,CMakeLists.txt,*.sh,*.yml,*cmake,*rst set number numberwidth=1 list listchars=tab:>-,trail:.,extends:>,precedes:<
 au BufNewFile,BufRead *.cl	set syntax=opencl
 
 " Instead of reverting the cursor to the last position in the buffer, we
@@ -133,3 +136,6 @@ endfun
 nnoremap <silent> <c-]> :call MatchCaseTag()<CR>
 
 nmap <F8> :TagbarToggle<CR>
+
+" Serenity
+let g:ycm_extra_conf_globlist = ['~/scm/git/serenity/.ycm_extra_conf.py']
