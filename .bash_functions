@@ -31,106 +31,61 @@ load_virtualenv() {
 	export LD_LIBRARY_PATH="$VIRTUAL_ENV/lib:$LD_LIBRARY_PATH"
 }
 
-loadWIC() {
-	load_virtualenv wic git/wic
-}
 
-loadNgas() {
-	load_virtualenv ngas_devel3 git/ngas
-}
-
-loadNgas2() {
-	load_virtualenv ngas_devel git/ngas
-}
-
-loadNgas3.7() {
-	load_virtualenv ngas_devel3.7 git/ngas
-}
-
-loadARL() {
-	load_virtualenv arl git/algorithm-reference-library
-}
-
-loadDlg2() {
-	load_virtualenv dlg2 git/daliuge yes
-}
-
-loadDlg3.5() {
-	load_virtualenv dlg3.5 git/daliuge yes
-}
-
-loadDlg3.7() {
-	load_virtualenv dlg3.7 git/daliuge yes
+loadIjson() {
+	load_virtualenv ijson git/ijson
 }
 
 loadDlg() {
-	load_virtualenv dlg3 git/daliuge yes
+	load_virtualenv daliuge git/daliuge
 }
 
-loadDlgPbc() {
-	load_virtualenv dlg_pbc git/daliuge-pbc
+loadNgas() {
+	load_virtualenv ngas-3.10 git/ngas
 }
 
-loadEagle() {
-	load_virtualenv eagle git/EAGLE
-}
-
-loadPips() {
-	load_virtualenv dlg-pips git/daliuge-pips
-}
-
-loadMWA() {
-	load_virtualenv mwa_workshop
-}
-
-loadChiles02() {
-	load_virtualenv aws-chiles02 git/aws-chiles02
-}
-
-loadSpead() {
-	load_virtualenv spead git/spead2
-}
-
-loadIntegratedPrototype() {
-	load_virtualenv integrated-prototype git/integration-prototype
-}
-
-loadPyprofit() {
-	load_virtualenv profit git/pyprofit yes
-}
-
-loadPyprofit3() {
-	load_virtualenv pyprofit3 git/pyprofit
-}
-
-loadAsap() {
-	load_virtualenv asap git/asap
-}
-
-loadOskar() {
-	load_virtualenv oskar git/OSKAR
-}
-
-loadJacal() {
-	loadDlg
-	cd ../jacal/apps/askap
+loadSdp() {
+	load_virtualenv sdp git
 }
 
 loadShark() {
 	load_virtualenv shark git/shark
 }
 
-loadAskapsoft() {
-	cd ${_SCM_ROOT}/git/askapsoft/
-	source initaskap.sh
+loadReceiveCore() {
+	load_virtualenv sdp git/ska-sdp-realtime-receive-core
 }
 
-loadPLAsTiCC() {
-	load_virtualenv plasticc_2018 git/plasticc-kit
+lrc() {
+	loadReceiveCore
 }
 
-loadIjson() {
-	load_virtualenv ijson git/ijson
+loadReceiveModules() {
+	load_virtualenv sdp git/ska-sdp-realtime-receive-modules
+}
+
+lrm() {
+	loadReceiveModules
+}
+
+loadReceiveProcessors() {
+	load_virtualenv sdp git/ska-sdp-realtime-receive-processors
+}
+
+lrp() {
+	loadReceiveProcessors
+}
+
+loadCbfEmu() {
+	load_virtualenv sdp git/ska-sdp-cbf-emulator
+}
+
+loadSdpIntegration() {
+	load_virtualenv sdp git/ska-sdp-integration
+}
+
+lsi() {
+	loadSdpIntegration
 }
 
 #
