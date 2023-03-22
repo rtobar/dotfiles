@@ -1,8 +1,10 @@
 #!/bin/bash
 
+HISTFILESIZE=500000
+HISTSIZE=50000
 export VISUAL=vim
-export HISTFILESIZE=50000
-export HISTSIZE=50000
+export HISTFILESIZE
+export HISTSIZE
 
 # Not always there, makes it easier to access a few programs
 export PATH=$PATH:/usr/sbin:/sbin

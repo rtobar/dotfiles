@@ -11,3 +11,5 @@ alias lr="ls -altr"
 alias qq="squeue -u ${_QUEUE_USERS}"
 alias qc="scancel -u `whoami`"
 alias qw="watch --interval 1 squeue -u ${_QUEUE_USERS}"
+
+alias gap="git add -p"
