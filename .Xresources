@@ -1,1 +1,5 @@
 *VT100.Translations: #override Ctrl<Key>space: set-altscreen(toggle) set-reverse-video(toggle)
+*saveLines: 10000
+XTerm*Background: black
+XTerm*Foreground: white
+XTerm*selectToClipboard: false
